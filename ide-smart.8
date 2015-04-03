@@ -1,0 +1,73 @@
+.TH CP 8 "20 February 2001" "ide-smart 1.4"
+.SH NAME
+ide-smart \- IDE SMART Checking tool
+.SH SYNOPSIS
+.BR ide-smart " \fIDEVICE\fR [" \-iq10 "] [" "\-d \fIDEVICE" ] 
+.RB [ \-\-device=\fIDEVICE ]
+.RB [ \-\-immediate ]
+.RB [ \-\-quiet-check ]
+.RB [ \-\-auto-on ]
+.RB [ \-\-auto-off ]
+.sp
+.BR ide-smart " [" \-\-help "] [" \-\-version ]
+.SH DESCRIPTION
+.B ide-smart
+performs and queries the results of various non destructive
+tests on a SMART capable IDE \fIDEVICE\fR.  You must have a BIOS and
+hardware that supports it.
+
+\fBSMART\fR stands for Self-Monitoring, Analysis and Reporting Technology,
+which provides near future failure prediction monitoring different attributes
+(listed as \fBId\fR) of the device.  If a \fBvalue\fR of a particular
+\fBId\fR (or attribute) is under a certain \fBthreshold\fR, the device most
+probabily will be about to fail.
+
+There are two type of tests: \fBonline\fR and \fBoffline\fR.  Online tests are
+periodically performed by the drive while it's being used, while offline
+tests can be performed only by manually starting an offline test.
+
+Each test also has a severity associated with it:  \fBAdvisory\fR and
+\fBPreFailure\fR.  Advisory indicates a possible failure, and PreFailure a
+Predictable Failure which is an "sure" failure in the near future.  Predictable
+failures ar characterized by a degradation of an attribute over time mostly
+corresponding to mechanic causes (for example head flying height degradation
+would indicate an impending head crash).
+
+The exact meaning of the attributes varies between manufacturers and even
+models, so it is impossible to decypher them (ranging through spin-up time
+to head flying height or throughput performance).  At any rate, the value
+you should care upon is the last column, holding whether a test \fBpassed\fR
+or \fBfailed\fR.
+.SH OPTIONS
+.TP
+.B "\-d \fIDEVICE\fB, \-\-device=\fIDEVICE"
+Select the \fIDEVICE\fR on to which perform the tests or query.
+.TP
+.B "\-i, \-\-immediate"
+Perform offline tests immediately.  Any access to the device will
+temporarily suspend offline tests.
+.TP
+.B "\-q, \-\-quiet-check"
+Outputs no messages.  Returns a negative value indicating how many tests
+failed, 0 if all went ok, or a positive value if there was some error which
+wasn't a test failure.
+.TP
+.B "\-1, \-\-auto-on"
+Starts offline tests (if any) on the device; wait about 30 minutes and run
+\fBide\-smart\fR again for results (time depends on the hard drive).  Any
+access to the device will temporarily suspend offline tests.
+.TP
+.B "\-0, \-\-auto-off"
+Ends offline test (if any) on the device.
+.SH "GNU STANDARD OPTIONS"
+.TP
+.B "\-\-help"
+Print a usage message on standard output and exit successfully.
+.TP
+.B "\-\-version"
+Print version information on standard output, then exit successfully.
+.TP
+.B "\-\-"
+Terminate option list.
+.SH AUTHOR
+Ragnar Hojland Espinosa <ragnar@ragnar-hojland.com>

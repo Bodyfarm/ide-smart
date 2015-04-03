@@ -1,0 +1,14 @@
+Begin3
+Title:          ide-smart
+Version:        1.4
+Entered-date:   20FEB01
+Description:    IDE S.M.A.R.T. test and query tool
+Keywords:       ide ata smart hard disk device diagnostic
+Author:         Ragnar Hojland Espinosa (ragnar@ragnar-hojland.com)
+		Gadi Oxman <gadio@netvision.net.il>
+Maintained-by:  Ragnar Hojland Espinosa (ragnar@ragnar-hojland.com)
+Primary-site:   http://lightside.eresmas.com/ide-smart-1.4.tar.gz
+Alternate-site: metalab.unc.edu /pub/Linux/system/hardware
+                16kB ide-smart-1.4.tar.gz
+Copying-policy: GPL
+End

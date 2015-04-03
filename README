@@ -1,0 +1,35 @@
+Installation
+=-=-=-=-=-=-=
+
+First, please do read the license in COPYING.  Then, run
+
+	make
+	
+and try the program (as root).  If you find it useful,
+
+	make install
+	
+will install the binary and the man page [0] on /usr/local/ which holds some
+info on S.M.A.R.T. too.
+
+
+Recommended usage
+=-=-=-=-=-=-=-=-=
+
+Add the following line or similar to your root crontab entry (obviously
+change hda to whatever you use).  This will make sure your hard disk is
+healthy each day, and if it isn't crontab will send you mail.
+
+00 07 * * * /usr/local/sbin/ide-smart /dev/hda|grep Failed
+
+WARNING!  shutting down or spinning off after detecting a failure may be
+quite dangerous since it is possible that the hard disk will refuse to spin
+on again.
+
+
+[0]  No, no info.. muahahahaha!! ;)
+-- 
+____/|  Ragnar Hojland  (ragnar@ragnar-hojland.com)      Fingerprint  94C4B
+\ o.O|                                                   2F0D27DE025BE2302C
+ =(_)=  "Thou shalt not follow the NULL pointer for      104B78C56 B72F0822
+   U     chaos and madness await thee at its end."       
